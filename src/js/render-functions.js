@@ -1,30 +1,31 @@
-export const createGallaryItem = images => {
-  return images
-    .map(image => {
-      `<div class="js-section-images">
-      <div class="js-card-image">
+export const createGallaryItem = itemImages => {
+  return itemImages
+    .map(
+      images =>
+        `<div class="js-section-images">
+      
         <img
-          src="${image.webformatURL}"
-          alt="${image.tags}"
+          src="${images.webformatURL}"
+          alt="${images.tags}"
           class="js-gallery-img"
         />
         <div class="js-group-text">
           <small class="js-text"
-            >Likes <span class="js-span-text">${image.likes}</span></small
+            >Likes <span class="js-span-text">${images.likes}</span></small
           >
           <small class="js-text"
-            >Views <span class="js-span-text">${image.views}</span></small
+            >Views <span class="js-span-text">${images.views}</span></small
           >
           <small class="js-text"
-            >Comments <span class="js-span-text">${image.comments}</span></small
+            >Comments <span class="js-span-text">${images.comments}</span></small
           >
           <small class="js-text"
             >Downloads
-            <span class="js-span-text">${image.downloads}</span></small
+            <span class="js-span-text">${images.downloads}</span></small
           >
         </div>
-      </div>
-    </div>`;
-    })
+      
+    </div>`
+    )
     .join('');
 };

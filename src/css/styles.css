@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding-top: 36px;
+  padding: 36px;
 }
 .modal-input {
   border: 1px solid #808080;
@@ -45,6 +45,19 @@
   background-color: #6c8cff;
 }
 
+.js-section-images {
+  display: flex;
+  flex-direction: column;
+  width: calc((100% - 48px) / 3);
+}
+
+.js-gallery-img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+  max-height: 100%;
+  flex-grow: 1;
+}
 .js-text {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
@@ -66,4 +79,16 @@
 }
 .js-group-text {
   display: flex;
+  justify-content: space-evenly;
+  padding-top: 4px;
+  border: 1px solid #808080;
+}
+.container {
+  display: flex;
+}
+.gallery {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  row-gap: 24px;
 }
