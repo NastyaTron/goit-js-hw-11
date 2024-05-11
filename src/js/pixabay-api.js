@@ -10,6 +10,9 @@ export const fetchPhotosByQuery = (q = 'flowers') => {
     safesearch: 'true',
   });
   return fetch(`${BASE_URL}?${searchParams}`).then(response => {
+    if (!response.ok) {
+      throw new Error('Error!');
+    }
     return response.json();
   });
 };
