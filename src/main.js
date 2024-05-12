@@ -7,9 +7,9 @@ import 'izitoast/dist/css/iziToast.min.css';
 import { createGallaryItem } from './js/render-functions.js';
 import { fetchPhotosByQuery } from './js/pixabay-api.js';
 
-const galleryEl = document.querySelector('.gallery');
+const galleryEl = document.querySelector('.js-gallery');
 const searchFormEl = document.querySelector('.form-field');
-// const loaderEl = document.querySelector('.');
+const loaderEl = document.querySelector('.loader');
 
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
 function onSearchFormSubmit(event) {
@@ -32,6 +32,7 @@ function onSearchFormSubmit(event) {
   }
 
   galleryEl.innerHTML = '';
+  loaderEl.classList.remove('is-hidden');
 
   fetchPhotosByQuery(searchQuery)
     .then(imagesData => {
@@ -50,13 +51,16 @@ function onSearchFormSubmit(event) {
       const markup = createGallaryItem(imagesData.hits);
 
       galleryEl.innerHTML = markup;
+
+      new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
+        captionDelay: 250,
+      });
+      // lightbox.refresh();
     })
     .catch(error => console.log(error))
     .finally(() => {
       event.target.reset();
+      loaderEl.classList.add('is-hidden');
     });
 }
-new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});

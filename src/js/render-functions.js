@@ -2,7 +2,7 @@ export const createGallaryItem = itemImages => {
   return itemImages
     .map(
       images =>
-        `<li class="js-section-images">
+        `<div class="js-section-images">
         <a href="${images.largeImageURL}">
         <img
           src="${images.webformatURL}"
@@ -24,7 +24,7 @@ export const createGallaryItem = itemImages => {
             <span class="js-span-text">${images.downloads}</span></small
           >
         </div>
-    </li>`
+    </div>`
     )
     .join('');
 };
